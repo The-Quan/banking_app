@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Customer List</h1>
+    <ul>
+        {% for customer in customers %}
+        <li>
+            {{ customer.name }} ({{ customer.email }}: {{ customer.balance }})
+            - <a href="{{ url_for('transactions', customer_id=customer.id) }}">View Transactions</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('create_customer') }}">Create New Customer</a>
+</body>
+</html>
